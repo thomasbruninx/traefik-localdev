@@ -1,0 +1,21 @@
+name: traefik-localdev
+services:
+  traefik:
+    container_name: traefik-localdev
+    image: traefik:v3.3
+    environment:
+      - TZ=Europe/Brussels
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data/logs/:/var/log/:rw
+      - ./data/certs/:/certs/:rw
+      - ./data/config/:/etc/traefik/:ro
+    restart: 'unless-stopped'
+networks:
+  default:
+    name: proxy-network
+    
