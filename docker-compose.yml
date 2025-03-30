@@ -13,9 +13,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data/logs/:/var/log/:rw
       - ./data/certs/:/certs/:rw
-      - ./data/config/:/etc/traefik/:ro
+      - ./config/:/etc/traefik/:ro
     restart: 'unless-stopped'
 networks:
   default:
-    name: proxy-network
+    name: localdev-network
     
